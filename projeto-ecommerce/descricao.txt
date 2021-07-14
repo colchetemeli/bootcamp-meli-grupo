@@ -1,0 +1,12 @@
+Vamos trabalhar em cima de um e-commerce de produtos tecnológicos, vocês precisarão desenvolver todo o ecossistema:
+
+1. Considere as seguintes relações: Vários produtos por pedido e vários pedidos por cliente.
+
+2. Crie um usuário administrador que poderá cadastrar, alterar ou remover produtos
+
+3. Crie um usuário cliente que poderá comprar na loja
+
+4. Produtos podem ter uma ou mais categorias e deve haver uma forma de filtrar
+produtos por categorias.
+
+Utilize as estruturas aprendidas até aqui para realizar a tarefa proposta.
