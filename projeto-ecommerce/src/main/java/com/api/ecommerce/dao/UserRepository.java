@@ -15,11 +15,11 @@ import java.util.List;
 @Repository
 public class UserRepository {
 
-    public void update(Integer id, User user){
+    public void update(Integer id, User user) {
         try {
             List<User> users = getList();
-            for (int i = 0; i < users.size() ; i++) {
-                if (users.get(i).getId().equals(id)){
+            for (int i = 0; i < users.size(); i++) {
+                if (users.get(i).getId().equals(id)) {
                     users.remove(i);
                     user.setId(id);
                     users.add(user);
@@ -29,8 +29,7 @@ public class UserRepository {
             PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(FILE)));
             mapper.writeValue(out, users);
             out.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -39,21 +38,22 @@ public class UserRepository {
     @Autowired
     private ObjectMapper mapper;
 
-    public User getUser(Integer id){
+    public User getUser(Integer id) {
         List<User> users = this.getList();
-        for (User user:users){
-            if (id.equals(user.getId())){
+        for (User user : users) {
+            if (id.equals(user.getId())) {
                 return user;
             }
         }
         return null;
     }
 
-    public List<User> getList(){
+    public List<User> getList() {
         List<User> users = new ArrayList<>();
         try {
             FileInputStream is = new FileInputStream(FILE);
-            TypeReference<List<User>> typeReference = new TypeReference<List<User>>() {};
+            TypeReference<List<User>> typeReference = new TypeReference<List<User>>() {
+            };
             users = mapper.readValue(is, typeReference);
             is.close();
         } catch (IOException e) {
@@ -62,5 +62,5 @@ public class UserRepository {
 
         return users;
     }
-    
+
 }

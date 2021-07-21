@@ -17,7 +17,7 @@ public class OrderService {
     @Autowired
     UserRepository userRepository;
 
-    public Order create(Order order){
+    public Order create(Order order) {
         orderRepository.add(order);
         User user = userRepository.getUser(order.getClientId());
         user.getOrderList().add(order);
@@ -25,8 +25,8 @@ public class OrderService {
         return order;
     }
 
-    public List<Order> getList(){
+    public List<Order> getList() {
         return orderRepository.getList();
     }
-    
+
 }

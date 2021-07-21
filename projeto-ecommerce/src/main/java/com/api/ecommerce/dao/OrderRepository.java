@@ -17,11 +17,12 @@ public class OrderRepository {
     @Autowired
     private ObjectMapper mapper;
 
-    public List<Order> getList(){
+    public List<Order> getList() {
         List<Order> orders = new ArrayList<>();
         try {
             FileInputStream is = new FileInputStream(FILE);
-            TypeReference<List<Order>> typeReference = new TypeReference<List<Order>>() {};
+            TypeReference<List<Order>> typeReference = new TypeReference<List<Order>>() {
+            };
             orders = mapper.readValue(is, typeReference);
             is.close();
         } catch (IOException e) {
@@ -38,8 +39,7 @@ public class OrderRepository {
             PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(FILE)));
             mapper.writeValue(out, orders);
             out.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

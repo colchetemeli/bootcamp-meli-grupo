@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/bootcamp-meli-grupo.iml" filepath="$PROJECT_DIR$/.idea/bootcamp-meli-grupo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projeto-consultorio.iml" filepath="$PROJECT_DIR$/projeto-consultorio.iml" />
     </modules>
   </component>
 </project>

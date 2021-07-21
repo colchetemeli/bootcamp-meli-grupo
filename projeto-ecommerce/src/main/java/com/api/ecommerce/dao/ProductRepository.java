@@ -19,11 +19,12 @@ public class ProductRepository {
     @Autowired
     private ObjectMapper mapper;
 
-    public List<Product> getList(){
+    public List<Product> getList() {
         List<Product> products = new ArrayList<>();
         try {
             FileInputStream is = new FileInputStream(FILE);
-            TypeReference<List<Product>> typeReference = new TypeReference<List<Product>>() {};
+            TypeReference<List<Product>> typeReference = new TypeReference<List<Product>>() {
+            };
             products = mapper.readValue(is, typeReference);
             is.close();
         } catch (IOException e) {
@@ -40,17 +41,16 @@ public class ProductRepository {
             PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(FILE)));
             mapper.writeValue(out, products);
             out.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void update(Product product, Integer id){
+    public void update(Product product, Integer id) {
         try {
             List<Product> products = getList();
-            for (int i = 0; i < products.size() ; i++) {
-                if (products.get(i).getId().equals(id)){
+            for (int i = 0; i < products.size(); i++) {
+                if (products.get(i).getId().equals(id)) {
                     products.remove(i);
                     product.setId(id);
                     products.add(product);
@@ -60,17 +60,16 @@ public class ProductRepository {
             PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(FILE)));
             mapper.writeValue(out, products);
             out.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void delete(Integer id){
+    public void delete(Integer id) {
         try {
             List<Product> products = getList();
-            for (int i = 0; i < products.size() ; i++) {
-                if (products.get(i).getId().equals(id)){
+            for (int i = 0; i < products.size(); i++) {
+                if (products.get(i).getId().equals(id)) {
                     products.remove(i);
                     break;
                 }
@@ -78,8 +77,7 @@ public class ProductRepository {
             PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(FILE)));
             mapper.writeValue(out, products);
             out.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

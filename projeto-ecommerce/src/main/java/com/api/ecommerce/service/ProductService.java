@@ -14,21 +14,21 @@ public class ProductService {
     @Autowired
     ProductRepository repository;
 
-    public Product create(Product product){
+    public Product create(Product product) {
         repository.add(product);
         return product;
     }
 
-    public Product update(Product product, Integer id){
+    public Product update(Product product, Integer id) {
         repository.update(product, id);
         return product;
     }
 
-    public void delete(Integer id){
+    public void delete(Integer id) {
         repository.delete(id);
     }
 
-    public List<Product> getList(){
+    public List<Product> getList() {
         return repository.getList();
     }
 }

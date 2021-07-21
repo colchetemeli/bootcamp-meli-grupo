@@ -12,9 +12,9 @@ public class UserService {
     @Autowired
     UserRepository repository;
 
-    public void auth(Integer userId){
+    public void auth(Integer userId) {
         System.out.println(repository.getUser(userId));
-        if(!repository.getUser(userId).getIsAdmin()){
+        if (!repository.getUser(userId).getIsAdmin()) {
             throw new UnauthorizedException("Este usuário não tem permissão");
         }
     }

@@ -20,14 +20,14 @@ public class OrderController {
     OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<?> createOrder(@RequestBody Order order, UriComponentsBuilder uriComponentsBuilder){
+    public ResponseEntity<?> createOrder(@RequestBody Order order, UriComponentsBuilder uriComponentsBuilder) {
         order = orderService.create(order);
         UriComponents uriComponents = uriComponentsBuilder.path("/{number}").buildAndExpand(order.getNumber());
         return ResponseEntity.created(uriComponents.toUri()).build();
     }
 
     @GetMapping
-    public List<Order> listProducts(){
+    public List<Order> listProducts() {
         return orderService.getList();
     }
 

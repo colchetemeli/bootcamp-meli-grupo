@@ -22,7 +22,7 @@ public class ProductController {
     UserService userService;
 
     @PostMapping
-    public ResponseEntity<?> createProduct(@RequestHeader Integer userId, @RequestBody Product product, UriComponentsBuilder uriComponentsBuilder){
+    public ResponseEntity<?> createProduct(@RequestHeader Integer userId, @RequestBody Product product, UriComponentsBuilder uriComponentsBuilder) {
         userService.auth(userId);
         product = productService.create(product);
         UriComponents uriComponents = uriComponentsBuilder.path("/products/{id}").buildAndExpand(product.getId());
@@ -30,20 +30,20 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public Product updateProduct(@RequestHeader Integer userId, @RequestBody Product product, @PathVariable Integer id){
+    public Product updateProduct(@RequestHeader Integer userId, @RequestBody Product product, @PathVariable Integer id) {
         userService.auth(userId);
-        return productService.update(product,id);
+        return productService.update(product, id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteProduct(@RequestHeader Integer userId, @PathVariable Integer id){
+    public void deleteProduct(@RequestHeader Integer userId, @PathVariable Integer id) {
         userService.auth(userId);
         productService.delete(id);
     }
 
     @GetMapping
-    public List<Product> listProducts(){
+    public List<Product> listProducts() {
         return productService.getList();
     }
 

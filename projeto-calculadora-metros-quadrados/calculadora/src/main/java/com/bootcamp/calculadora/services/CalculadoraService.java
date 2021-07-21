@@ -30,6 +30,8 @@ public class CalculadoraService {
         Comodo maiorComodo = casa.getComodos().get(0);
         Map<String, Double> areaPorComodo = new HashMap<>();
 
+        casa.getComodos().stream().collect(Collectors.toList()).;
+
         for (Comodo c : casa.getComodos()) {
             if (maiorComodo.getArea() < c.getArea()) {
                 maiorComodo = c;
@@ -37,6 +39,7 @@ public class CalculadoraService {
             somaMetrosQuadrados += c.getArea();
             areaPorComodo.put(c.getNome(), c.getArea());
         }
+
 
         double valorCasa = somaMetrosQuadrados * 800;
 
